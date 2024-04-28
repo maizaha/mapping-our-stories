@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Neighborhood Oil Drilling Health Effects</title>
+        <!-- hint: remember to change your page title! -->
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- Leaflet's css-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+        <!-- Leaflet's JavaScript-->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+        
+        <!-- Cluster Marker's CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+        <!-- Cluster Marker's JavaScript -->
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+        <script src="https://d3js.org/d3.v4.js"></script>
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lexend&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                  <li><img src="./img/wellness_logo.png"></img></li> 
+                    <li><a id = "ugh" href="index.html">Map</a></li>
+                    <li><a href="survey.html">Take the Survey</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a><u>EN</u>/ES</a></li>
+                </ul>
+              </nav>         
+            </header>
+            
+            <div id="title">           
+                <h2><span style="font-weight: bold; color: #242649">Community Health Narratives from Neighborhoods Surrounding Inglewood Oil Field</span></h2>
+              </div>  
+
+                          <!-- modal (pop up) -->
+            <div id="myModal" class="modal2">
+
+                <div class="modal-content2">
+                    
+                    <span class="close">&times;</span>
+                    <center><h2 style="font-size: 20px;"> Welcome to <span style="font-weight: bold; color: #de3434">WELL</span><span style="font-weight: bold; color: #1c1281">.NESS</span>, a community mapping project <br>centered on health narratives from the Inglewood Oil Field.</h2></center>
+                    <p style="font-size: 16px;"> This project seeks to serve the communities and individuals living near the Inglewood Oil Field in Los Angeles. Neighborhoods surrounding the Inglewood Oil 
+                        Field are at risk of developing negative health effects due to the toxins released from both active and inactive (but unsealed) neighborhood oil wells. These neighborhoods are often overrepresented by
+                        people of color, especially Black and Latinx populations. <br><br>To highlight the voices of community members 
+                        and their experiences living in this region, we have designed a short survey that any community member can take in English or Spanish. After taking the survey, you will see your response
+                        anonymously recorded on our site and mapped according to your zip code. <br><br>When interacting on the site, the "Stories" tab will display survey responses, while the "Summary" tab will display the race/ethnicity breakdown of a specific zip code
+                        based on survey responses, as well as other key information. The intensity of the color <span style="font-weight: bold; color: #ad2d2d">red</span> 
+                        depicts the number of responses in each zip code.<br><br>Even if you choose not to contribute your story at this time or are simply interested in exploring the site, 
+                        we hope this website acts as a database of community knowledge and a source of empowerment in the fight for health justice.
+                    </p>
+                        
+                </div>
+            </div>
+
+        <div class="main">
+             
+            <div id="the_map">
+            </div> 
+            
+            <div class="panel">
+                    <div id = "buttons">
+                        <button class="tablinks" onclick="openTab(event, 'stories')" id="defaultOpen">Stories</button>
+                        <button class="tablinks" onclick="openTab(event, 'summary')">Summary</button>
+
+                    </div>
+                    <div id = "content">
+                        <div id="summary" class="tabcontent">
+                            <p>Here is where a summary of survey data will be visualized for each zip code region.</p>
+
+                        </div>
+                        <div id="stories" class="tabcontent">
+                            <!-- <p>Here is where community stories will be listed for each zip code region.</p>  -->
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+        <div id="footer">
+            <p>Project created for Asia Am 191A, Spring 2023. Please contact maizahali@ucla.edu with any questions or concerns.</p>
+        </div>
+        <script src="js/script.js"></script>
+
+    </body>
+</html>
