@@ -472,12 +472,12 @@ function createStory(results, currZip){
     )
 }
 
-function createSummary(results, currZip){
-    const item = document.createElement("list"); 
-    item.id = "title"; 
-    const itemspace = document.getElementById("summary");
-    itemspace.appendChild(item);
-    item.innerHTML += `<h3>Zip Code: ${currZip}</h3>`; 
+// function createSummary(results, currZip){
+//     const item = document.createElement("list"); 
+//     item.id = "title"; 
+//     const itemspace = document.getElementById("summary");
+//     itemspace.appendChild(item);
+//     item.innerHTML += `<h3>Zip Code: ${currZip}</h3>`; 
 
 
 
