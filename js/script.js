@@ -320,7 +320,7 @@ var zips = {
 };
 
 // declare variables
-let mapOptions = {'center': [34.05,-118.8],'zoom':12}
+let mapOptions = {'center': [34.05,-118.34],'zoom':12}
 
 
 let liveZip = ""; 
