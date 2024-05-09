@@ -292,16 +292,17 @@ document.getElementById("stories").innerHTML = "Hover your mouse over the map to
 
 
 let shading = {
-    "90232": 0,
-    "90034": 0,
-    "90230": 0, 
-    "90056": 0, 
-    "90043": 0, 
-    "90016": 0, 
-    "90019": 0, 
-    "90302": 0, 
-    "90062": 0, 
-    "90008": 0
+    "90001": 0,
+    "90002": 0,
+    "90003": 0, 
+    "90007": 0, 
+    "90018": 0, 
+    "90011": 0, 
+    "90037": 0, 
+    "90047": 0, 
+    "90061": 0, 
+    "90062": 0,
+    "90280": 0
 };
 
 let responseLength = 0; 
@@ -309,35 +310,38 @@ function processData(results){
     responseLength = results.data.length; 
     console.log(results)
     results.data.forEach(data => {
-       if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90232") {
-        shading["90232"]++;
+       if(data['Zip Code'] == "90001") {
+        shading["90001"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90034") {
-        shading["90034"]++;
+       else if(data['Zip Code'] == "90002") {
+        shading["90002"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90230") {
-        shading["90230"]++;
+       else if(data['Zip Code'] == "90003") {
+        shading["90003"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90056") {
-        shading["90056"]++;
+       else if(data['Zip Code'] == "90007") {
+        shading["90007"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90043") {
-        shading["90043"]++;
+       else if(data['Zip Code'] == "90018") {
+        shading["90018"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90016") {
-        shading["90016"]++;
+       else if(data['Zip Code'] == "90011") {
+        shading["90011"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90019") {
-        shading["90019"]++;
+       else if(data['Zip Code'] == "90037") {
+        shading["90037"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90302") {
-        shading["90302"]++;
+       else if(data['Zip Code'] == "90047") {
+        shading["90047"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90062") {
+       else if(data['Zip Code'] == "90061") {
+        shading["90061"]++;
+       }
+       else if(data['Zip Code'] == "90062") {
         shading["90062"]++;
        }
-       else if(data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == "90008") {
-        shading["90008"]++;
+       else if(data['Zip Code'] == "90280") {
+        shading["90280"]++;
        }
         // createStory(data.lat, data.lng, data)
     })
@@ -455,26 +459,13 @@ function createStory(results, currZip){
     let count = 0; 
     let length = shading[currZip]; 
     results.data.forEach(data => {
-        if (data['Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal.'] == currZip)
+        if (data['Zip Code'] == currZip)
     {
         count++; 
         item.innerHTML += `<p><i>Story ${count} of ${length}</i></p>`; 
-        item.innerHTML += `<p><strong>Race: </strong>${data["Which of the following best describe you?"]}</p>`
-        item.innerHTML += `<p><strong>Aware of nearby oil sites: </strong>${data["Are you aware of any oil drilling sites near the primary residence you mentioned above? "]}</p>`
-        console.log(data["Do you think residing near oil drilling sites has affected your quality of living? "])
-        item.innerHTML += `<p><strong>Effect of proximity to nearby oil sites on quality of life: </strong>${data["Do you think residing near oil drilling sites has affected your quality of living? "]}</p>`
-        let healthtext = data["Are you aware of any health impacts of oil drilling?"]
-        if (data["Please describe why you think this is the case."]){
-            healthtext += " " + data["Please describe why you think this is the case."]; 
-        }
-        item.innerHTML +=  `<p> <strong>Aware of health impacts of oil drilling: </strong>${healthtext}</p>`
-        if (data["Is there anything else you would like to share about your experiences with oil drilling in Los Angeles?"] != null){
-            item.innerHTML += `<p><strong>Is there anything else you'd like to share? </strong>${data["Is there anything else you would like to share about your experiences with oil drilling in Los Angeles?"]}</p>`; 
-        }
-        if (data["Please select your preferred language / Elige el idioma preferido. "] == "Español")
-        {
-            item.innerHTML += `<p><i>Response translated from Spanish using Google Translate</i></p>`}
-            item.innerHTML += `<hr>`
+        item.innerHTML += `<p><strong>Interview Highlight: </strong>${data["Interview Highlight"]}</p>`
+        item.innerHTML += `<p><strong>Full Transcript: </strong>${data["Full Transcript of Interview"]}</p>`
+        item.innerHTML += `<p><strong>Listen here: </strong>${data["Interview Recording"]}</p>`
         }
         
     }
@@ -490,140 +481,140 @@ function createSummary(results, currZip){
 
 
 
-    if (shading[currZip] > 0){
-        item.id = "dataviz";
-    itemspace.appendChild(item); 
-    item.innerHTML +=  `<p><i>Demographics of Respondents from ${currZip}</i></p>`
+//     if (shading[currZip] > 0){
+//         item.id = "dataviz";
+//     itemspace.appendChild(item); 
+//     item.innerHTML +=  `<p><i>Demographics of Respondents from ${currZip}</i></p>`
 
-            let groups = [
-                {"group": "White or Caucasian", "count": 0}, 
-                {"group": "Asian or Pacific Islander", "count": 0},
-                {"group": "Hispanic or Latino", "count": 0},
-                {"group": "Black or African American", "count": 0}, 
-                {"group": "Native American or Alaskan Native", "count": 0},
-                {"group": "Multiracial or biracial", "count": 0}, 
-                {"group": "Prefer not to say", "count": 0}
-            ]
-            let qualitycount = [0,0,0,0];
-
-
-                results.data.forEach(data => {
-                    if (data["Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal."] == currZip){
-                        if (data["Which of the following best describe you?"].includes("White")){
-                            groups[0]["count"]++; 
-                        }
-                        else if (data["Which of the following best describe you?"].includes("Asian")){
-                            groups[1]["count"]++; 
-                        }
-                        else if (data["Which of the following best describe you?"].includes("Hispanic")){
-                            groups[2]["count"]++
-                        }
-                        else if (data["Which of the following best describe you?"].includes("Black")){
-                            groups[3]["count"]++
-                        }
-                        else if (data["Which of the following best describe you?"].includes("Native")){
-                            groups[4]["count"]++
-                        }
-                        else if (data["Which of the following best describe you?"].includes("Multiracial") || data["Which of the following best describe you?"].includes("Multirraccial")){
-                            groups[5]["count"]++
-                        }
-                        else if (data["Which of the following best describe you?"].includes("refer")){
-                            groups[6]["count"]++
-                        }
-                        if (data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("positively")){
-                            qualitycount[0]++; 
-                        }
-                        else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("negatively")){
-                            qualitycount[1]++; 
-                        }
-                        else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("sure")){
-                            qualitycount[2]++; 
-                        } 
-                        else {
-                            qualitycount[3]++; 
-                        }
-                    }
-                    }
-                )
-                console.log(qualitycount)
-            var svgCirWidth = 300, svgCirHeight = 300, radius = Math.min(svgCirWidth, svgCirHeight) / 2;
-
-            const pieContainer = d3.select("#dataviz")
-                .append("svg")
-                .attr("width", svgCirWidth)
-                .attr("height", svgCirHeight);
-            
-            //create group element to hold pie chart
-            
-            var g = pieContainer.append("g")
-                .attr("transform", "translate(" + 150 + "," + radius + ")");
-            
-            
-            var color = d3.scaleOrdinal()
-                .domain(groups)
-                .range(["#005a83", "#6f62aa", "#d15a9f", "#ff6966", "#ffa600", "#b33dc6", "#f46a9b"])
-            
-            var pie = d3.pie().value(function (d) {
-                return d.count;
-            });
-            
-            var path = d3.arc()
-                .outerRadius(radius)
-                .innerRadius(0);
-            
-            var arc = g.selectAll("arc")
-                .data(pie(groups))
-                .enter() //means keeps looping in the data
-                .append("g");
-            
-            arc.append("path")
-                .attr("d", path)
-                .attr("fill", function (d) {
-                    return color(d.data.group);
-                })
-                .append("text")
-                .text("afdaf")
-            
-            var label = d3.arc()
-                .outerRadius(radius)
-                .innerRadius(0);
-            
-            arc.append("text")
-                .attr("transform", (d) => {
-                    return "translate(" + label.centroid(d) + ")";
-                })
-                .attr("text-anchor", "middle")
-                .text((d) => {
-                    return d.data.count > 0 ? d.data.group : ''
-                })
-                .style("font-size", 10)
-                .style('fill', 'white')
+//             let groups = [
+//                 {"group": "White or Caucasian", "count": 0}, 
+//                 {"group": "Asian or Pacific Islander", "count": 0},
+//                 {"group": "Hispanic or Latino", "count": 0},
+//                 {"group": "Black or African American", "count": 0}, 
+//                 {"group": "Native American or Alaskan Native", "count": 0},
+//                 {"group": "Multiracial or biracial", "count": 0}, 
+//                 {"group": "Prefer not to say", "count": 0}
+//             ]
+//             let qualitycount = [0,0,0,0];
 
 
-                item.id = "qual";
-                itemspace.appendChild(item); 
+//                 results.data.forEach(data => {
+//                     if (data["Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal."] == currZip){
+//                         if (data["Which of the following best describe you?"].includes("White")){
+//                             groups[0]["count"]++; 
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("Asian")){
+//                             groups[1]["count"]++; 
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("Hispanic")){
+//                             groups[2]["count"]++
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("Black")){
+//                             groups[3]["count"]++
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("Native")){
+//                             groups[4]["count"]++
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("Multiracial") || data["Which of the following best describe you?"].includes("Multirraccial")){
+//                             groups[5]["count"]++
+//                         }
+//                         else if (data["Which of the following best describe you?"].includes("refer")){
+//                             groups[6]["count"]++
+//                         }
+//                         if (data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("positively")){
+//                             qualitycount[0]++; 
+//                         }
+//                         else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("negatively")){
+//                             qualitycount[1]++; 
+//                         }
+//                         else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("sure")){
+//                             qualitycount[2]++; 
+//                         } 
+//                         else {
+//                             qualitycount[3]++; 
+//                         }
+//                     }
+//                     }
+//                 )
+//                 console.log(qualitycount)
+//             var svgCirWidth = 300, svgCirHeight = 300, radius = Math.min(svgCirWidth, svgCirHeight) / 2;
 
-                item.innerHTML+=`<p><i>In response to the question "Do you think residing near oil drilling sites has affected your quality of living?", here's what people in ${currZip} said:</i></p>`
+//             const pieContainer = d3.select("#dataviz")
+//                 .append("svg")
+//                 .attr("width", svgCirWidth)
+//                 .attr("height", svgCirHeight);
+            
+//             //create group element to hold pie chart
+            
+//             var g = pieContainer.append("g")
+//                 .attr("transform", "translate(" + 150 + "," + radius + ")");
+            
+            
+//             var color = d3.scaleOrdinal()
+//                 .domain(groups)
+//                 .range(["#005a83", "#6f62aa", "#d15a9f", "#ff6966", "#ffa600", "#b33dc6", "#f46a9b"])
+            
+//             var pie = d3.pie().value(function (d) {
+//                 return d.count;
+//             });
+            
+//             var path = d3.arc()
+//                 .outerRadius(radius)
+//                 .innerRadius(0);
+            
+//             var arc = g.selectAll("arc")
+//                 .data(pie(groups))
+//                 .enter() //means keeps looping in the data
+//                 .append("g");
+            
+//             arc.append("path")
+//                 .attr("d", path)
+//                 .attr("fill", function (d) {
+//                     return color(d.data.group);
+//                 })
+//                 .append("text")
+//                 .text("afdaf")
+            
+//             var label = d3.arc()
+//                 .outerRadius(radius)
+//                 .innerRadius(0);
+            
+//             arc.append("text")
+//                 .attr("transform", (d) => {
+//                     return "translate(" + label.centroid(d) + ")";
+//                 })
+//                 .attr("text-anchor", "middle")
+//                 .text((d) => {
+//                     return d.data.count > 0 ? d.data.group : ''
+//                 })
+//                 .style("font-size", 10)
+//                 .style('fill', 'white')
 
-                item.innerHTML+=`<p>${qualitycount[0]} of ${shading[currZip]} said "Yes, positively".</p>`
-                item.innerHTML+=`<p>${qualitycount[1]} of ${shading[currZip]} said "Yes, negatively".</p>`
-                item.innerHTML+=`<p>${qualitycount[2]} of ${shading[currZip]} said "Not sure".</p>`
-                item.innerHTML+=`<p>${qualitycount[3]} of ${shading[currZip]} said "No, it has not impacted it".</p>`
+
+//                 item.id = "qual";
+//                 itemspace.appendChild(item); 
+
+//                 item.innerHTML+=`<p><i>In response to the question "Do you think residing near oil drilling sites has affected your quality of living?", here's what people in ${currZip} said:</i></p>`
+
+//                 item.innerHTML+=`<p>${qualitycount[0]} of ${shading[currZip]} said "Yes, positively".</p>`
+//                 item.innerHTML+=`<p>${qualitycount[1]} of ${shading[currZip]} said "Yes, negatively".</p>`
+//                 item.innerHTML+=`<p>${qualitycount[2]} of ${shading[currZip]} said "Not sure".</p>`
+//                 item.innerHTML+=`<p>${qualitycount[3]} of ${shading[currZip]} said "No, it has not impacted it".</p>`
 
                 
                 
-            }
-            else{
-                item.innerHTML+=`<p>No responses available for this zip code</p>`
-            }
+//             }
+//             else{
+//                 item.innerHTML+=`<p>No responses available for this zip code</p>`
+//             }
 
-    }
+//     }
 
-function sum(array, start, end) {
-    var total = 0;
-    for(var i=start; i<end; i++) total += array[i];
-    return total;
-}
+// function sum(array, start, end) {
+//     var total = 0;
+//     for(var i=start; i<end; i++) total += array[i];
+//     return total;
+// }
 
 
 
