@@ -219,3 +219,11 @@ img {
   vertical-align:top;
   float: left;
 }
+
+pre {
+  font-size: inherit;
+  color: inherit;
+  border: initial;
+  padding: initial;
+  font-family: inherit;
+  }
