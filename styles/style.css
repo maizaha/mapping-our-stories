@@ -226,5 +226,6 @@ pre {
   border: initial;
   padding: initial;
   font-family: inherit;
-  min-width: 0
+  white-space: pre-wrap;
   }
+
