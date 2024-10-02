@@ -220,12 +220,16 @@ img {
   float: left;
 }
 
-pre {
+/* pre {
   font-size: inherit;
   color: inherit;
   border: initial;
   padding: initial;
   font-family: inherit;
   white-space: pre-wrap;
-  }
+  } */
+
+#stories {
+  white-space: pre-wrap;
+}
 
