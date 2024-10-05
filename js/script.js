@@ -534,10 +534,9 @@ function createStory(results, currZip){
     {
         count++; 
         item.innerHTML += `<p><i>Story ${count} of ${length}</i></p>`; 
-        item.innerHTML += `<p><strong><a href=${data["Interview Recording"]}>Listen here</a></strong></p>` 
+        item.innerHTML += `<p><strong> <a href=${data["Interview Recording"]} target="_blank" rel="noopener noreferrer"> Listen to the full interview</a></strong></p>` 
         item.innerHTML += `<p><strong>Interview Highlight: </strong>${data["Interview Highlight"]}</p>`
         item.innerHTML += `<p><strong>Full Transcript: </strong>${data["Full Transcript of Interview"]}</p>`
-        //item.innerHTML += `<p><strong>Listen here: </strong>${data["Interview Recording"]}</p>`
         }
         
     }
