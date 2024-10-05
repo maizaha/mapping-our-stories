@@ -320,7 +320,7 @@ var zips = {
 };
 
 // declare variables
-let mapOptions = {'center': [34.05,-118.34],'zoom':12}
+let mapOptions = {'center': [34.07,-118.36],'zoom':11}
 
 
 let liveZip = ""; 
@@ -534,7 +534,7 @@ function createStory(results, currZip){
     {
         count++; 
         item.innerHTML += `<p><i>Story ${count} of ${length}</i></p>`; 
-        item.innerHTML += `<p><strong> <a href=${data["Interview Recording"]} target="_blank" rel="noopener noreferrer"> Listen to the full interview</a></strong></p>` 
+        item.innerHTML += `<p><strong> <a href=${data["Interview Recording"]} target="_blank" rel="noopener noreferrer">Listen to the full interview.</a></strong></p>` 
         item.innerHTML += `<p><strong>Interview Highlight: </strong>${data["Interview Highlight"]}</p>`
         item.innerHTML += `<p><strong>Full Transcript: </strong>${data["Full Transcript of Interview"]}</p>`
         }
