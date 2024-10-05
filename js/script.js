@@ -533,11 +533,8 @@ function createStory(results, currZip){
         if (data['Zip Code'] == currZip)
     {
         count++; 
-        item.innerHTML += `<p><strong>Listen here: </strong></p>` 
-        var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
-        audio.play();
-        <button onclick="play()">Play Audio</button>
         item.innerHTML += `<p><i>Story ${count} of ${length}</i></p>`; 
+        item.innerHTML += `<p><strong><a href=${data["Interview Recording"]}>Listen here</a></strong></p>` 
         item.innerHTML += `<p><strong>Interview Highlight: </strong>${data["Interview Highlight"]}</p>`
         item.innerHTML += `<p><strong>Full Transcript: </strong>${data["Full Transcript of Interview"]}</p>`
         //item.innerHTML += `<p><strong>Listen here: </strong>${data["Interview Recording"]}</p>`
