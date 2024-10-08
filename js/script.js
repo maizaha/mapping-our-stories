@@ -353,7 +353,7 @@ function loadData(url){
 loadData(dataUrl)
 document.getElementById("stories").innerHTML = "Hover your mouse over the map to activate shading.<br><br>Click on any zip code to view community stories here under the Stories tab. A graphical summary of responses will be displayed under the Summary tab."; 
 
-
+//shading map based on zip codes
 let shading = {
     "90001": 0,
     "90002": 0,
@@ -424,6 +424,7 @@ L.geoJson(zips, {
     style: style,
     }).addTo(map);
 
+//shading map based on number of responses
 function getColor(d) {
     console.log(responseLength)
     let x = shading[d]/responseLength; // need to fix proportions and colors and math  
@@ -478,7 +479,6 @@ let prev = null;
 function clickAZipCode(e) {
     // map.fitBounds(e.target.getBounds());
     if (liveZip == ""){ // only happens once 
-        console.log("whee")
         prev = e.target; 
     }
     else if (e.target.feature.properties.zcta != liveZip){
@@ -543,151 +543,48 @@ function createStory(results, currZip){
     )
 }
 
-// // function createSummary(results, currZip){
-// //     const item = document.createElement("list"); 
-// //     item.id = "title"; 
-// //     const itemspace = document.getElementById("summary");
-// //     itemspace.appendChild(item);
-// //     item.innerHTML += `<h3>Zip Code: ${currZip}</h3>`; 
+//add oil wells to map based on geojson file 
+fetch("LA_oil_gas_wells.geojson") 
+    .then(response => { 
+        return response.json();
+    })
+    .then(data => {
+        // Filter features based on coordinates (roughly the area of South LA)
+        const filteredFeatures = data.features.filter(feature => {
+            return (feature.properties.oil_gas_latitude >= 33.902197 && feature.properties.oil_gas_latitude <= 34.038265 && feature.properties.oil_gas_longitude >= -118.335143 && feature.properties.oil_gas_longitude <= -118.222650); 
+        });
 
+        // Create a GeoJSON layer with only the filtered features (points within rough boundires of South LA)
+        L.geoJSON(filteredFeatures, {
+            // Use circle markers for each point
+            pointToLayer: (feature, latlng) => {
+                // Define the color based on the oil_gas_wellstatus property
+                let color;
+                if (feature.properties.oil_gas_wellstatus === 'Active') {
+                    color = "#00d423";  // Green for Active wells
+                } else if (feature.properties.oil_gas_wellstatus === 'Idle') {
+                    color = "#ff7800";  // Orange for Idle wells
+                } else if (feature.properties.oil_gas_wellstatus === 'Plugged' || feature.properties.oil_gas_wellstatus === 'PluggedOnly') {
+                    color = "#969696";  // Gray for Plugged wells
+                } else {
+                    color = "#0a78ff";  // Blue for other statuses
+                }
 
-
-// //     if (shading[currZip] > 0){
-// //         item.id = "dataviz";
-// //     itemspace.appendChild(item); 
-// //     item.innerHTML +=  `<p><i>Demographics of Respondents from ${currZip}</i></p>`
-
-// //             let groups = [
-// //                 {"group": "White or Caucasian", "count": 0}, 
-// //                 {"group": "Asian or Pacific Islander", "count": 0},
-// //                 {"group": "Hispanic or Latino", "count": 0},
-// //                 {"group": "Black or African American", "count": 0}, 
-// //                 {"group": "Native American or Alaskan Native", "count": 0},
-// //                 {"group": "Multiracial or biracial", "count": 0}, 
-// //                 {"group": "Prefer not to say", "count": 0}
-// //             ]
-// //             let qualitycount = [0,0,0,0];
-
-
-// //                 results.data.forEach(data => {
-// //                     if (data["Please provide the zip code of your primary residence. / Por favor ingrese el còdigo postal de su residencia principal."] == currZip){
-// //                         if (data["Which of the following best describe you?"].includes("White")){
-// //                             groups[0]["count"]++; 
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("Asian")){
-// //                             groups[1]["count"]++; 
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("Hispanic")){
-// //                             groups[2]["count"]++
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("Black")){
-// //                             groups[3]["count"]++
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("Native")){
-// //                             groups[4]["count"]++
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("Multiracial") || data["Which of the following best describe you?"].includes("Multirraccial")){
-// //                             groups[5]["count"]++
-// //                         }
-// //                         else if (data["Which of the following best describe you?"].includes("refer")){
-// //                             groups[6]["count"]++
-// //                         }
-// //                         if (data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("positively")){
-// //                             qualitycount[0]++; 
-// //                         }
-// //                         else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("negatively")){
-// //                             qualitycount[1]++; 
-// //                         }
-// //                         else if(data["Do you think residing near oil drilling sites has affected your quality of living? "].includes("sure")){
-// //                             qualitycount[2]++; 
-// //                         } 
-// //                         else {
-// //                             qualitycount[3]++; 
-// //                         }
-// //                     }
-// //                     }
-// //                 )
-// //                 console.log(qualitycount)
-// //             var svgCirWidth = 300, svgCirHeight = 300, radius = Math.min(svgCirWidth, svgCirHeight) / 2;
-
-// //             const pieContainer = d3.select("#dataviz")
-// //                 .append("svg")
-// //                 .attr("width", svgCirWidth)
-// //                 .attr("height", svgCirHeight);
-            
-// //             //create group element to hold pie chart
-            
-// //             var g = pieContainer.append("g")
-// //                 .attr("transform", "translate(" + 150 + "," + radius + ")");
-            
-            
-// //             var color = d3.scaleOrdinal()
-// //                 .domain(groups)
-// //                 .range(["#005a83", "#6f62aa", "#d15a9f", "#ff6966", "#ffa600", "#b33dc6", "#f46a9b"])
-            
-// //             var pie = d3.pie().value(function (d) {
-// //                 return d.count;
-// //             });
-            
-// //             var path = d3.arc()
-// //                 .outerRadius(radius)
-// //                 .innerRadius(0);
-            
-// //             var arc = g.selectAll("arc")
-// //                 .data(pie(groups))
-// //                 .enter() //means keeps looping in the data
-// //                 .append("g");
-            
-// //             arc.append("path")
-// //                 .attr("d", path)
-// //                 .attr("fill", function (d) {
-// //                     return color(d.data.group);
-// //                 })
-// //                 .append("text")
-// //                 .text("afdaf")
-            
-// //             var label = d3.arc()
-// //                 .outerRadius(radius)
-// //                 .innerRadius(0);
-            
-// //             arc.append("text")
-// //                 .attr("transform", (d) => {
-// //                     return "translate(" + label.centroid(d) + ")";
-// //                 })
-// //                 .attr("text-anchor", "middle")
-// //                 .text((d) => {
-// //                     return d.data.count > 0 ? d.data.group : ''
-// //                 })
-// //                 .style("font-size", 10)
-// //                 .style('fill', 'white')
-
-
-// //                 item.id = "qual";
-// //                 itemspace.appendChild(item); 
-
-// //                 item.innerHTML+=`<p><i>In response to the question "Do you think residing near oil drilling sites has affected your quality of living?", here's what people in ${currZip} said:</i></p>`
-
-// //                 item.innerHTML+=`<p>${qualitycount[0]} of ${shading[currZip]} said "Yes, positively".</p>`
-// //                 item.innerHTML+=`<p>${qualitycount[1]} of ${shading[currZip]} said "Yes, negatively".</p>`
-// //                 item.innerHTML+=`<p>${qualitycount[2]} of ${shading[currZip]} said "Not sure".</p>`
-// //                 item.innerHTML+=`<p>${qualitycount[3]} of ${shading[currZip]} said "No, it has not impacted it".</p>`
-
-                
-                
-// //             }
-// //             else{
-// //                 item.innerHTML+=`<p>No responses available for this zip code</p>`
-// //             }
-
-// //     }
-
-// // function sum(array, start, end) {
-// //     var total = 0;
-// //     for(var i=start; i<end; i++) total += array[i];
-// //     return total;
-// // }
-
-
+                return L.circleMarker(latlng, {
+                    radius: 8,         // Circle marker size
+                    fillColor: color, // Color of the circle
+                    color: "#000",      // Border color
+                    weight: 1,          // Border width
+                    opacity: 1,         // Border opacity
+                    fillOpacity: 0.8    // Fill opacity
+                });
+            },
+            onEachFeature: (feature, layer) => {
+                layer.bindPopup(`<b>Operator Name: </b>${feature.properties.oil_gas_operatorname}<br><b>Status: </b>${feature.properties.oil_gas_wellstatus}`
+                );
+            }
+        }).addTo(map);
+    });
 
 function openTab(evt, tabname) {
     var i, tabcontent, tablinks;
