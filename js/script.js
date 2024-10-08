@@ -66,6 +66,48 @@ var zips = {
         },
         {
             "type": "Feature",
+            "properties": { "OBJECTID_1": 1617, "objectid": 1617, "cnty_fips": "", "county": "", "tract": "", "tract_id": "", "census_key": "", "zcta": "90015", "zcta_key": "0690015", "latitude": 34.03937803, "longitude": -118.2662993, "tot_pop": 18986, "age_under5": 1206, "age_5to9": 1108, "age_10to14": 1122, "age_15to19": 1570, "age_20to24": 1932, "age_25to29": 2011, "age_30to34": 1999, "age_35to39": 1603, "age_40to44": 1300, "age_45to49": 1091, "age_50to54": 1049, "age_55to59": 839, "age_60to64": 635, "age_65to69": 458, "age_70to74": 384, "age_75to79": 316, "age_80to84": 205, "age_85_ove": 158, "age16_over": 15299, "age18_over": 14775, "age21_over": 13586, "age62_over": 1887, "age65_over": 1521, "male": 9833, "female": 9153, "age_median": 31.3, "age_medi_1": 31.7, "age_medi_2": 30.8, "one_race": 18116, "white": 6711, "black_afam": 1334, "amind_alan": 196, "asian": 2671, "nathaw_isl": 15, "other_race": 7189, "multi_race": 870, "hispanic_l": 12875, "non_hisp_l": 6111, "white_nhl": 1944, "black_af_1": 1240, "amind_al_1": 22, "asian_nhl": 2638, "nathaw_i_1": 9, "other_nhl": 60, "multi_ra_1": 198, "tot_in_hou": 18192, "tot_in_gc": 794, "gc_inst": 15, "gc_noninst": 779, "gc_correct": 0, "gc_juv": 0, "gc_nurs": 15, "gc_other": 0, "hh_total": 7420, "hh_family": 3528, "hh_nonfaml": 3892, "hh_nonfami": 3022, "hh_nonfa_1": 1711, "hh_nonfa_2": 194, "hh_nonfa_3": 1311, "hh_nonfa_4": 395, "hh_with_un": 2018, "hh_with_65": 1242, "hu_total": 8245, "hu_occ": 7420, "hu_vac": 825, "hu_vac_ren": 439, "hu_vac_sea": 90, "hu_occ_own": 1174, "hu_occ_o_1": 2588, "hu_occ_ren": 6246, "hu_occ_r_1": 15604, "Shape_Length": 0.11889099911586173, "Shape_Area": 0.00044454368351975939, "InPoly_FID": 1616, "SimPgnFlag": 0, "MaxSimpTol": 0.0014473214335623029, "MinSimpTol": 0.0014473214335623029 },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [-118.262823999727743, 34.046186999930171],
+                        [-118.271009999511818, 34.051798999724099],
+                        [-118.274313000744371, 34.051362000256177],
+                        [-118.280348000259949, 34.04619300020687],
+                        [-118.277896999646771, 34.045086000418621],
+                        [-118.278935999896419, 34.043480000101965],
+                        [-118.284101999807433, 34.039855000208149],
+                        [-118.282852999766078, 34.037617999571069],
+                        [-118.277704999785897, 34.036950999389148],
+                        [-118.279192000010767, 34.034653999582474],
+                        [-118.276742999489784, 34.036514999967324],
+                        [-118.264678999835951, 34.030990999734911],
+                        [-118.262446999429471, 34.029961999946408],
+                        [-118.262904999865839, 34.027467000002105],
+                        [-118.258560000043929, 34.025879999662322],
+                        [-118.257436999517893, 34.027631000370434],
+                        [-118.255489999663723, 34.030582999805631],
+                        [-118.250771000581153, 34.029111999419285],
+                        [-118.255076000357121, 34.03119300005693],
+                        [-118.25301799988074, 34.034108000483911],
+                        [-118.251453999702278, 34.033320000117953],
+                        [-118.250329999130145, 34.037302999433905],
+                        [-118.252710000066429, 34.039474999771471],
+                        [-118.251680000231772, 34.041330000778942],
+                        [-118.25409299999194, 34.040735999466847],
+                        [-118.256716000443021, 34.040454999998303],
+                        [-118.254942999619686, 34.041599000593465],
+                        [-118.256865000119603, 34.045163000372213],
+                        [-118.25820599990692, 34.043727000700585],
+                        [-118.26010100006107, 34.047256000663936],
+                        [-118.262823999727743, 34.046186999930171]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
             "properties": { "OBJECTID_1": 995, "objectid": 995, "cnty_fips": "", "county": "", "tract": "", "tract_id": "", "census_key": "", "zcta": "90011", "zcta_key": "0690011", "latitude": 34.00706962, "longitude": -118.25866986, "tot_pop": 103892, "age_under5": 10729, "age_5to9": 9723, "age_10to14": 9852, "age_15to19": 10185, "age_20to24": 9266, "age_25to29": 8853, "age_30to34": 8547, "age_35to39": 7902, "age_40to44": 7130, "age_45to49": 5865, "age_50to54": 4805, "age_55to59": 3704, "age_60to64": 2548, "age_65to69": 1665, "age_70to74": 1259, "age_75to79": 813, "age_80to84": 543, "age_85_ove": 503, "age16_over": 71589, "age18_over": 67448, "age21_over": 61485, "age62_over": 6208, "age65_over": 4783, "male": 52794, "female": 51098, "age_median": 26.2, "age_medi_1": 26.0, "age_medi_2": 26.5, "one_race": 99508, "white": 35138, "black_afam": 9764, "amind_alan": 1219, "asian": 591, "nathaw_isl": 37, "other_race": 52759, "multi_race": 4384, "hispanic_l": 92879, "non_hisp_l": 11013, "white_nhl": 720, "black_af_1": 9189, "amind_al_1": 53, "asian_nhl": 499, "nathaw_i_1": 8, "other_nhl": 224, "multi_ra_1": 320, "tot_in_hou": 103430, "tot_in_gc": 462, "gc_inst": 138, "gc_noninst": 324, "gc_correct": 0, "gc_juv": 0, "gc_nurs": 138, "gc_other": 0, "hh_total": 22168, "hh_family": 19039, "hh_nonfaml": 3129, "hh_nonfami": 2215, "hh_nonfa_1": 1084, "hh_nonfa_2": 337, "hh_nonfa_3": 1131, "hh_nonfa_4": 519, "hh_with_un": 14712, "hh_with_65": 3751, "hu_total": 23547, "hu_occ": 22168, "hu_vac": 1379, "hu_vac_ren": 647, "hu_vac_sea": 22, "hu_occ_own": 6016, "hu_occ_o_1": 31706, "hu_occ_ren": 16152, "hu_occ_r_1": 71724, "Shape_Length": 0.14847761542626686, "Shape_Area": 0.0010916252820302225, "InPoly_FID": 994, "SimPgnFlag": 0, "MaxSimpTol": 0.0014473214335623029, "MinSimpTol": 0.0014473214335623029 },
             "geometry": {
                 "type": "Polygon",
@@ -206,54 +248,6 @@ var zips = {
         },
         {
             "type": "Feature",
-            "properties": { "OBJECTID_1": 802, "objectid": 802, "cnty_fips": "", "county": "", "tract": "", "tract_id": "", "census_key": "", "zcta": "90280", "zcta_key": "0690280", "latitude": 33.94460119, "longitude": -118.19257263, "tot_pop": 94396, "age_under5": 7963, "age_5to9": 7817, "age_10to14": 8277, "age_15to19": 8776, "age_20to24": 7839, "age_25to29": 7428, "age_30to34": 7093, "age_35to39": 6969, "age_40to44": 6549, "age_45to49": 5885, "age_50to54": 5309, "age_55to59": 4515, "age_60to64": 3353, "age_65to69": 2418, "age_70to74": 1589, "age_75to79": 1117, "age_80to84": 773, "age_85_ove": 726, "age16_over": 68569, "age18_over": 65022, "age21_over": 59974, "age62_over": 8535, "age65_over": 6623, "male": 46321, "female": 48075, "age_median": 29.4, "age_medi_1": 28.5, "age_medi_2": 30.2, "one_race": 90868, "white": 47645, "black_afam": 890, "amind_alan": 878, "asian": 732, "nathaw_isl": 99, "other_race": 40624, "multi_race": 3528, "hispanic_l": 89442, "non_hisp_l": 4954, "white_nhl": 3233, "black_af_1": 585, "amind_al_1": 110, "asian_nhl": 647, "nathaw_i_1": 69, "other_nhl": 147, "multi_ra_1": 163, "tot_in_hou": 94308, "tot_in_gc": 88, "gc_inst": 72, "gc_noninst": 16, "gc_correct": 0, "gc_juv": 0, "gc_nurs": 72, "gc_other": 0, "hh_total": 23278, "hh_family": 20150, "hh_nonfaml": 3128, "hh_nonfami": 2292, "hh_nonfa_1": 1042, "hh_nonfa_2": 294, "hh_nonfa_3": 1250, "hh_nonfa_4": 702, "hh_with_un": 13805, "hh_with_65": 5093, "hu_total": 24160, "hu_occ": 23278, "hu_vac": 882, "hu_vac_ren": 466, "hu_vac_sea": 35, "hu_occ_own": 10658, "hu_occ_o_1": 46665, "hu_occ_ren": 12620, "hu_occ_r_1": 47643, "Shape_Length": 0.29825206329825266, "Shape_Area": 0.0018910121592576868, "InPoly_FID": 801, "SimPgnFlag": 0, "MaxSimpTol": 0.0014473214335623029, "MinSimpTol": 0.0014473214335623029 },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [-118.168010000760887, 33.91416700020693],
-                        [-118.159006999273572, 33.909963999738864],
-                        [-118.156236999238104, 33.917043999780844],
-                        [-118.170423999667833, 33.923608000309002],
-                        [-118.167579999817121, 33.928305000175669],
-                        [-118.164155000153073, 33.926475000321034],
-                        [-118.16154100011704, 33.928846999989105],
-                        [-118.166084999223301, 33.935370000425223],
-                        [-118.161266999172653, 33.943933000507627],
-                        [-118.156252999975948, 33.951037999903804],
-                        [-118.158604000474213, 33.951893999808306],
-                        [-118.173367999633456, 33.954342000283134],
-                        [-118.173086000118758, 33.956313000344721],
-                        [-118.177642000677736, 33.957721000523804],
-                        [-118.179521999240819, 33.95791799971596],
-                        [-118.179652999886002, 33.955099000118821],
-                        [-118.185279999472357, 33.95563699974781],
-                        [-118.19278200008921, 33.961622000554939],
-                        [-118.225203000518036, 33.966264999730015],
-                        [-118.222973999350529, 33.959029000587975],
-                        [-118.229647000408704, 33.961199999980067],
-                        [-118.231484999732913, 33.960937999589078],
-                        [-118.226507000397703, 33.938196000345215],
-                        [-118.214186999730202, 33.936920999104871],
-                        [-118.216768000942466, 33.945440999902303],
-                        [-118.21310900038003, 33.945040000295819],
-                        [-118.213786999270553, 33.940171999738027],
-                        [-118.21053199935227, 33.939827000016066],
-                        [-118.210855999904425, 33.937061000165102],
-                        [-118.181739999901026, 33.934362999852624],
-                        [-118.182824000427217, 33.930790999704925],
-                        [-118.175305999971897, 33.930670000420207],
-                        [-118.176669999920534, 33.918165000214628],
-                        [-118.169281000018088, 33.914770000135434],
-                        [-118.173259000002815, 33.911804000054588],
-                        [-118.16839499962947, 33.912146999684353],
-                        [-118.168010000760887, 33.91416700020693]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
             "properties": { "OBJECTID_1": 973, "objectid": 973, "cnty_fips": "", "county": "", "tract": "", "tract_id": "", "census_key": "", "zcta": "90044", "zcta_key": "0690044", "latitude": 33.95272934, "longitude": -118.29190368, "tot_pop": 89779, "age_under5": 8270, "age_5to9": 7777, "age_10to14": 7880, "age_15to19": 8309, "age_20to24": 7571, "age_25to29": 7068, "age_30to34": 6385, "age_35to39": 5937, "age_40to44": 6059, "age_45to49": 5761, "age_50to54": 5347, "age_55to59": 3946, "age_60to64": 2903, "age_65to69": 2102, "age_70to74": 1716, "age_75to79": 1253, "age_80to84": 797, "age_85_ove": 698, "age16_over": 64240, "age18_over": 60887, "age21_over": 55933, "age62_over": 8172, "age65_over": 6566, "male": 43128, "female": 46651, "age_median": 28.6, "age_medi_1": 27.2, "age_medi_2": 29.9, "one_race": 86213, "white": 20135, "black_afam": 33656, "amind_alan": 666, "asian": 338, "nathaw_isl": 81, "other_race": 31337, "multi_race": 3566, "hispanic_l": 54351, "non_hisp_l": 35428, "white_nhl": 895, "black_af_1": 32766, "amind_al_1": 133, "asian_nhl": 282, "nathaw_i_1": 67, "other_nhl": 456, "multi_ra_1": 829, "tot_in_hou": 89319, "tot_in_gc": 460, "gc_inst": 101, "gc_noninst": 359, "gc_correct": 20, "gc_juv": 11, "gc_nurs": 70, "gc_other": 0, "hh_total": 25144, "hh_family": 18932, "hh_nonfaml": 6212, "hh_nonfami": 5031, "hh_nonfa_1": 2175, "hh_nonfa_2": 709, "hh_nonfa_3": 2856, "hh_nonfa_4": 1164, "hh_with_un": 13272, "hh_with_65": 5414, "hu_total": 27479, "hu_occ": 25144, "hu_vac": 2335, "hu_vac_ren": 1514, "hu_vac_sea": 25, "hu_occ_own": 7899, "hu_occ_o_1": 30892, "hu_occ_ren": 17245, "hu_occ_r_1": 58427, "Shape_Length": 0.21817097272500047, "Shape_Area": 0.0012762850512844199, "InPoly_FID": 972, "SimPgnFlag": 0, "MaxSimpTol": 0.0014473214335623029, "MinSimpTol": 0.0014473214335623029 },
             "geometry": {
                 "type": "Polygon",
@@ -333,13 +327,14 @@ const dataUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTa9AVc8UTLUefF
 const map = L.map('the_map').setView(mapOptions.center, mapOptions.zoom);
 
 
-//map
-let Esri_WorldGrayCanvas = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16, 
+//map aesthetics
+let CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
 });
 
-Esri_WorldGrayCanvas.addTo(map);
+CartoDB_Positron.addTo(map)
 
 
 function loadData(url){
@@ -367,7 +362,7 @@ let shading = {
     "90062": 0,
     "90044": 0,
     "90089": 0,
-    "90280": 0
+    "90015": 0
 };
 
 let responseLength = 0; 
@@ -405,14 +400,14 @@ function processData(results){
        else if(data['Zip Code'] == "90062") {
         shading["90062"]++;
        }
-       else if(data['Zip Code'] == "90280") {
-        shading["90280"]++;
-       }
        else if(data['Zip Code'] == "90044") {
         shading["90044"]++;
        }
        else if(data['Zip Code'] == "90089") {
         shading["90089"]++;
+       }
+       else if(data['Zip Code'] == "90015") {
+        shading["90015"]++;
        }
         // createStory(data.lat, data.lng, data)
     })
@@ -551,7 +546,7 @@ fetch("LA_oil_gas_wells.geojson")
     .then(data => {
         // Filter features based on coordinates (roughly the area of South LA)
         const filteredFeatures = data.features.filter(feature => {
-            return (feature.properties.oil_gas_latitude >= 33.902197 && feature.properties.oil_gas_latitude <= 34.038265 && feature.properties.oil_gas_longitude >= -118.335143 && feature.properties.oil_gas_longitude <= -118.222650); 
+            return (feature.properties.oil_gas_latitude >= 33.902197 && feature.properties.oil_gas_latitude <= 34.053022 && feature.properties.oil_gas_longitude >= -118.335143 && feature.properties.oil_gas_longitude <= -118.222650); 
         });
 
         // Create a GeoJSON layer with only the filtered features (points within rough boundires of South LA)
