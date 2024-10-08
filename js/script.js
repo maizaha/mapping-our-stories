@@ -538,11 +538,44 @@ function createStory(results, currZip){
     )
 }
 
-//add oil wells to map based on geojson file 
+//create separate layer groups for each well status
+var activeWellsLayer = L.layerGroup();
+var idleWellsLayer = L.layerGroup();
+var pluggedWellsLayer = L.layerGroup();
+var otherWellsLayer = L.layerGroup();
+
+//function to change colors of markers based on well status
+function getMarkerStyle(status) {
+    let color;
+    switch (status) {
+        case 'Active': 
+            color = "#00d423";  // Green for Active wells
+            break;
+        case 'Idle':
+            color = "#ff7800";  // Orange for Idle wells
+            break;
+        case 'Plugged':
+            color = "#969696";  // Gray for Plugged wells
+            break;
+        case 'PluggedOnly':
+            color = "#969696";  // Gray for Plugged wells
+            break;
+        default:
+            color = "#0a78ff";  // Blue for other statuses
+    }
+    return {
+        radius: 5,         // Circle marker size
+        fillColor: color, // Color of the circle
+        color: "#000",      // Border color
+        weight: 1,          // Border width
+        opacity: 1,         // Border opacity
+        fillOpacity: 0.8    // Fill opacity
+    };
+}
+
+// Fetch the GeoJSON file and add it to the oilGasWellsLayer
 fetch("LA_oil_gas_wells.geojson") 
-    .then(response => { 
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         // Filter features based on coordinates (roughly the area of South LA)
         const filteredFeatures = data.features.filter(feature => {
@@ -550,36 +583,36 @@ fetch("LA_oil_gas_wells.geojson")
         });
 
         // Create a GeoJSON layer with only the filtered features (points within rough boundires of South LA)
-        L.geoJSON(filteredFeatures, {
-            // Use circle markers for each point
-            pointToLayer: (feature, latlng) => {
-                // Define the color based on the oil_gas_wellstatus property
-                let color;
-                if (feature.properties.oil_gas_wellstatus === 'Active') {
-                    color = "#00d423";  // Green for Active wells
-                } else if (feature.properties.oil_gas_wellstatus === 'Idle') {
-                    color = "#ff7800";  // Orange for Idle wells
-                } else if (feature.properties.oil_gas_wellstatus === 'Plugged' || feature.properties.oil_gas_wellstatus === 'PluggedOnly') {
-                    color = "#969696";  // Gray for Plugged wells
-                } else {
-                    color = "#0a78ff";  // Blue for other statuses
-                }
-
-                return L.circleMarker(latlng, {
-                    radius: 8,         // Circle marker size
-                    fillColor: color, // Color of the circle
-                    color: "#000",      // Border color
-                    weight: 1,          // Border width
-                    opacity: 1,         // Border opacity
-                    fillOpacity: 0.8    // Fill opacity
-                });
-            },
-            onEachFeature: (feature, layer) => {
-                layer.bindPopup(`<b>Operator Name: </b>${feature.properties.oil_gas_operatorname}<br><b>Status: </b>${feature.properties.oil_gas_wellstatus}`
+        filteredFeatures.forEach(feature => {
+            const latlng = [feature.properties.oil_gas_latitude, feature.properties.oil_gas_longitude];
+            const wellStatus = feature.properties.oil_gas_wellstatus;
+            const marker = L.circleMarker(latlng, getMarkerStyle(wellStatus))
+                .bindPopup(
+                    `<b>Operator Name: </b>${feature.properties.oil_gas_operatorname}<br><b>Status: </b>${feature.properties.oil_gas_wellstatus}`
                 );
+
+            // Add the GeoJSON layer to the appropriate group, based on well status
+            if (feature.properties.oil_gas_wellstatus === 'Active') {
+                activeWellsLayer.addLayer(marker);
+            } else if (feature.properties.oil_gas_wellstatus === 'Idle') {
+                idleWellsLayer.addLayer(marker);
+            } else if (feature.properties.oil_gas_wellstatus === ('Plugged' || 'PluggedOnly')) {
+                pluggedWellsLayer.addLayer(marker);
+            } else {
+                otherWellsLayer.addLayer(marker);
             }
-        }).addTo(map);
     });
+
+    //Add the layer control to the map
+    var overlayMaps = {
+        "Active Wells": activeWellsLayer,
+        "Idle Wells": idleWellsLayer,
+        "Plugged Wells": pluggedWellsLayer,
+         "Other Wells": otherWellsLayer
+    };
+
+    L.control.layers(null, overlayMaps).addTo(map); //base layers as null since I'm using the default OSM layer
+});
 
 function openTab(evt, tabname) {
     var i, tabcontent, tablinks;
