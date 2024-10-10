@@ -314,8 +314,8 @@ var zips = {
 };
 
 // declare variables
-let mapOptions = {'center': [34,-118.3],'zoom':11}
 
+let mapOptions = {'center': [34,-118.3],'zoom':11}
 
 let liveZip = ""; 
 
@@ -336,19 +336,10 @@ let CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
 
 CartoDB_Positron.addTo(map)
 
-
-function loadData(url){
-    Papa.parse(url, {
-        header: true,
-        download: true,
-        complete: results => processData(results)
-    })
-}
-
-loadData(dataUrl)
-document.getElementById("stories").innerHTML = "Hover your mouse over the map to activate shading.<br><br>Click on any zip code to view community stories here under the Stories tab. A graphical summary of responses will be displayed under the Summary tab."; 
+document.getElementById("stories").innerHTML = "Click on any ZIP code to view community stories here under the Stories tab. A graphical summary of responses will be displayed under the Summary tab."; 
 
 //shading map based on zip codes
+//initial value of 0 before stories are processed
 let shading = {
     "90001": 0,
     "90002": 0,
@@ -366,63 +357,23 @@ let shading = {
 };
 
 let responseLength = 0; 
+
+//Function to process data and update shading values
 function processData(results){
     responseLength = results.data.length; 
     console.log(results)
     results.data.forEach(data => {
-       if(data['Zip Code'] == "90001") {
-        shading["90001"]++;
-       }
-       else if(data['Zip Code'] == "90002") {
-        shading["90002"]++;
-       }
-       else if(data['Zip Code'] == "90003") {
-        shading["90003"]++;
-       }
-       else if(data['Zip Code'] == "90007") {
-        shading["90007"]++;
-       }
-       else if(data['Zip Code'] == "90018") {
-        shading["90018"]++;
-       }
-       else if(data['Zip Code'] == "90011") {
-        shading["90011"]++;
-       }
-       else if(data['Zip Code'] == "90037") {
-        shading["90037"]++;
-       }
-       else if(data['Zip Code'] == "90047") {
-        shading["90047"]++;
-       }
-       else if(data['Zip Code'] == "90061") {
-        shading["90061"]++;
-       }
-       else if(data['Zip Code'] == "90062") {
-        shading["90062"]++;
-       }
-       else if(data['Zip Code'] == "90044") {
-        shading["90044"]++;
-       }
-       else if(data['Zip Code'] == "90089") {
-        shading["90089"]++;
-       }
-       else if(data['Zip Code'] == "90015") {
-        shading["90015"]++;
-       }
-        // createStory(data.lat, data.lng, data)
-    })
-    // map.fitBounds(allLayers.getBounds());
-    console.log(shading)
+        if (shading[data['Zip Code']] !== undefined) {
+            shading[data['Zip Code']]++;
+        }
+    });
+    return shading
 }
 
-L.geoJson(zips, {
-    style: style,
-    }).addTo(map);
-
-//shading map based on number of responses
+// Function to get color based on zip code data (for shading)
 function getColor(d) {
     console.log(responseLength)
-    let x = shading[d]/responseLength; // need to fix proportions and colors and math  
+    let x = shading[d]/responseLength; // proportion of responses per zip code 
     console.log(x)
     return x >= 0.8 ? '#991f00' :
            x >= 0.6  ? '#cc2900' :
@@ -432,6 +383,7 @@ function getColor(d) {
                       '#FFFFFF';
 }
 
+// Function to define the style for the zip code areas
 function style(feature) {
     return {
         fillColor: getColor(feature.properties.zcta),
@@ -444,23 +396,17 @@ function style(feature) {
 }
 
 
-
+// Add interactivity: highlight on mouseover
 function highlightFeature(e) {
     var layer = e.target;
-
     layer.setStyle({
-        weight: 4,
-        color: '#8E270A',
-        dashArray: '',
-        fillOpacity: 0.5, 
+        weight: 5,
     });
-
-    layer.bringToFront();
     info.update(layer.feature.properties);
 }
 
+// Reset style on mouseout
 function resetHighlight(e) {
-    // reset if mouseover is on a zipcode other than the one that's live 
     if (e.target.feature.properties.zcta != liveZip){
         geojson.resetStyle(e.target);
     }
@@ -469,29 +415,25 @@ function resetHighlight(e) {
     }
     info.update();
 }
+
 let prev = null; 
 
+// Add interactivity: events when zip code is clicked
 function clickAZipCode(e) {
-    // map.fitBounds(e.target.getBounds());
     if (liveZip == ""){ // only happens once 
         prev = e.target; 
     }
     else if (e.target.feature.properties.zcta != liveZip){
-        console.log("clicked a diff zipcode") 
         geojson.resetStyle(prev)
     }
-    else{
-        console.log("same zipcode clicked")
-        prev = e.target; 
-    }
     liveZip = e.target.feature.properties.zcta; 
-
     highlightFeature(e); 
     loadData2(dataUrl)
     document.getElementById("stories").innerHTML = ""; 
     document.getElementById("summary").innerHTML = ""; 
 }
 
+// Load data for specific zip code on click
 function loadData2(url){
     Papa.parse(url, {
         header: true,
@@ -503,6 +445,7 @@ function loadData2(url){
     })
 }
 
+// Define the interactions for each feature
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
@@ -511,11 +454,25 @@ function onEachFeature(feature, layer) {
     });
 }
 
-geojson = L.geoJson(zips, {
-    style: style,
-    onEachFeature: onEachFeature
-}).addTo(map);
+// GeoJSON layer - initially NOT added to the map
+let geojson;
 
+// Process data and then add the layer to the map
+Papa.parse(dataUrl, {
+    header: true,
+    download: true,
+    complete: results => {
+        processData(results);
+
+        // Now that the data is ready, add to map
+        geojson = L.geoJson(zips, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+    }
+})
+
+// Populate "Story" tab
 function createStory(results, currZip){
     const item = document.createElement("list"); 
     item.id = "words"; 
@@ -524,12 +481,16 @@ function createStory(results, currZip){
     
     let count = 0; 
     let length = shading[currZip]; 
+    item.innerHTML += `<h3>Voices from ${currZip}</h3>`; 
+    if (length == 0) { // if no responses yet
+        item.innerHTML += '<p>Currently, no stories have been collected for this ZIP code. Please check back later!</p>'
+    }
     results.data.forEach(data => {
         if (data['Zip Code'] == currZip)
     {
         count++; 
         item.innerHTML += `<p><i>Story ${count} of ${length}</i></p>`; 
-        item.innerHTML += `<p><strong> <a href=${data["Interview Recording"]} target="_blank" rel="noopener noreferrer">Listen to the full interview.</a></strong></p>` 
+        item.innerHTML += `<p><strong><a href=${data["Interview Recording"]}target="_blank" rel="noopener noreferrer">Listen to the full interview.</a></strong></p>` 
         item.innerHTML += `<p><strong>Interview Highlight: </strong>${data["Interview Highlight"]}</p>`
         item.innerHTML += `<p><strong>Full Transcript: </strong>${data["Full Transcript of Interview"]}</p>`
         }
@@ -643,7 +604,7 @@ legend.onAdd = function (map) {
 	div.style.fontFamily = "font-family: 'Archivo', sans-serif"; //FIX THIS WITH UPDATED FONT
 
 	div.innerHTML =
-		"<b>Key:</b> Proportion of Total Responses from Each Zip Code<br><br>";
+		"<b>Key:</b> Proportion of total responses from each ZIP code<br><br>";
 
 	div.innerHTML +=
 		'<i style="background:#991f00; width: 18px; height: 18px; float: left; margin-right: 5px;"></i> ' +
@@ -671,7 +632,7 @@ info.onAdd = function (map) {
 
 // method that we will use to update the control based on feature properties passed
 info.update = function (zips) {
-    this._div.innerHTML = '<h4>Zip Code Information</h4>' +  (zips ?
+    this._div.innerHTML = '<h4>ZIP Code Information</h4>' +  (zips ?
         '<b>' + zips.zcta + '</b><br />' + shading[zips.zcta] + ' responses'
         : 'Hover over a region <br> to learn more.');
 };
