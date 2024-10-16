@@ -20,11 +20,15 @@ header{
 }
 
 #footer{
-    padding-top: 20px;
-    grid-area: footer;
-    text-align: center;
-    font-style: italic;
-    font-family: 'Open Sans', sans-serif;
+  padding-top: 50px;
+  grid-area: footer;
+  text-align: center;
+  width: 100%;
+  color: rgb(111, 111, 111);
+  font-family: 'Open Sans', sans-serif;
+  font-size: small;
+  font-style: italic;
+  
 }
 
 

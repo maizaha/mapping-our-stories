@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mapping Our Stories: Oil Drilling and Community Health in South LA</title>
+        <title>Mapping Our Stories: Community Health Impacts of Neighborhood Oil Drilling</title>
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
         <link rel="stylesheet" href="styles/style.css">
@@ -15,15 +15,15 @@
         <!-- Papa Parse -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 
-        <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
-
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lexend&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+   
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     </head>
 
     <header>
@@ -35,12 +35,12 @@
             </ul>
           </nav>         
     </header>
-    
+
     <body>
 
             
             <div id="title">           
-                <h2><span style="font-weight: bold; color: #242649">Community Health Narratives from South LA Neighborhoods</span></h2>
+                <h2><span style="font-weight: bold; color: #242649">Community Health Narratives from South LA Residents</span></h2>
               </div>  
 
                           <!-- modal (pop up) -->
@@ -49,15 +49,19 @@
                 <div class="modal-content2">
                     
                     <span class="close">&times;</span>
-                    <center><h2 style="font-size: 20px;"> Welcome to <span style="font-weight: bold; color: #de3434">WELL</span><span style="font-weight: bold; color: #1c1281">.NESS</span>, a community mapping project <br>centered on health narratives from the Inglewood Oil Field.</h2></center>
-                    <p style="font-size: 16px;"> This project seeks to serve the communities and individuals living near the Inglewood Oil Field in Los Angeles. Neighborhoods surrounding the Inglewood Oil 
-                        Field are at risk of developing negative health effects due to the toxins released from both active and inactive (but unsealed) neighborhood oil wells. These neighborhoods are often overrepresented by
-                        people of color, especially Black and Latinx populations. <br><br>To highlight the voices of community members 
-                        and their experiences living in this region, we have designed a short survey that any community member can take in English or Spanish. After taking the survey, you will see your response
-                        anonymously recorded on our site and mapped according to your zip code. <br><br>When interacting on the site, the "Stories" tab will display survey responses, while the "Summary" tab will display the race/ethnicity breakdown of a specific zip code
-                        based on survey responses, as well as other key information. The intensity of the color <span style="font-weight: bold; color: #ad2d2d">red</span> 
-                        depicts the number of responses in each zip code.<br><br>Even if you choose not to contribute your story at this time or are simply interested in exploring the site, 
-                        we hope this website acts as a database of community knowledge and a source of empowerment in the fight for health justice.
+                    <center><h2 style="font-size: 20px;"> Welcome to <span style="font-weight: bold; color: #de3434">Mapping Our Stories</span>, a community mapping project <br>uplifting health narratives from affected South LA neighborhoods.</h2></center>
+                    <p style="font-size: 16px;"> This project seeks to serve the communities and individuals living in South LA. 
+                        Community members are at risk of developing negative health effects due to the toxins released from both active and inactive 
+                        (but unsealed) neighborhood oil wells. These neighborhoods are often overrepresented by people of color, especially Latinx 
+                        and Black populations. <br><br>This mapping tool highlights the voices of individuals interviewed by local community organizations 
+                        under the STAND-LA coalition. Interviews are mapped according to each individual's ZIP code. For privacy reasons, exact locational 
+                        information and personal details (including names) have been redacted. <br><br>When interacting with the site, the "Stories" tab 
+                        will showcase all interviews collected for each ZIP code region, while the "Summary" tab will display the race/ethnicity breakdown 
+                        of a specific ZIP code, as well as other key information. The map is shaded according to the intensity of the color 
+                        <span style="font-weight: bold; color: #ad2d2d">red</span>, which depicts the proportional amount of stories collected for each ZIP 
+                        code. Hover over the layers side panel to also map oil and gas wells in the area, according to data provided by CalGEM and prepared
+                        by the LA County Department of Public Health.<br><br>We hope this website acts as a living archive of community knowledge and a source 
+                        of empowerment in the fight against neighborhood oil drilling.
                     </p>
                         
                 </div>
@@ -88,9 +92,13 @@
 
         </div>
         <div id="footer">
-            <p>Project funded by UCLA Internet Research Initiative. Please contact maizahali@ucla.edu with any questions or concerns.</p>
+            <p>Project funded by UCLA Internet Research Initiative, in collaboration with Strategic Concepts in Organizing and Policy Education (SCOPE) and the Stand Together Against Neighborhood Drilling (STAND)-LA coalition.</p>
         </div>
         <script src="js/script.js"></script>
-
+        
+        <!-- Bootstrap - jQuery, Popper.js, Boostrap JS -->
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
     </body>
 </html>

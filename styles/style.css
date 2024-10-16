@@ -24,8 +24,9 @@ header{
     grid-area: footer;
     text-align: center;
     width: 100%;
-    color: black;
+    color: rgb(111, 111, 111);
     font-family: 'Open Sans', sans-serif;
+    font-size: small;
     font-style: italic;
     
 }
@@ -91,6 +92,7 @@ nav {
     color:#ffffff;
     background: #005a83;
     border-radius: 5px;
+    transition: 0.3s ease;
   }
 
   nav ul a:active{
