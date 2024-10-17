@@ -502,7 +502,15 @@ function createStory(results, currZip){
     )
 }
 
-
+//populate the Summary tab
+function createSummary(results, currZip){
+    const item = document.createElement("list"); 
+    item.id = "words"; 
+    const itemspace = document.getElementById("summary");
+    itemspace.appendChild(item);
+    item.innerHTML += `<h3>Summary of data from ${currZip}</h3>`; 
+    item.innerHTML+=`<p>Insert data visualization here.</p>`;
+}
 //create separate layer groups for each well status
 var activeWellsLayer = L.layerGroup();
 var idleWellsLayer = L.layerGroup();

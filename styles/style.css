@@ -226,6 +226,7 @@ img {
   padding: 20px;
 }
 
+/* preserves white space in interview text */
 #stories {
   white-space: pre-wrap;
 }
