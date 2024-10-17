@@ -1,3 +1,4 @@
+//select zip codes that are part of South LA
 var zips = {
     "type": "FeatureCollection",
     "name": "ca_zipcodes",
@@ -315,7 +316,7 @@ var zips = {
 
 // declare variables
 
-let mapOptions = {'center': [34,-118.3],'zoom':11}
+let mapOptions = {'center': [33.98,-118.3],'zoom':12}
 
 let liveZip = ""; 
 

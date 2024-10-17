@@ -56,16 +56,17 @@ h1, h2{
 
 nav {
     display: flex; 
-    padding: 30px;
+    flex-direction: row;
     top: 0px;
     width: 100%;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    background-color: #005a83;
   }
 
   nav ul {
     list-style-type: none; 
     margin: 0;
-    padding: 0;
+    padding: 30px;
     display: flex; 
     float: right;
     width: 100%;
@@ -80,7 +81,7 @@ nav {
   }
 
   nav ul li a {
-    color: rgb(0, 0, 0);
+    color: rgb(192, 207, 220);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -90,8 +91,6 @@ nav {
 
   nav ul li a:hover{
     color:#ffffff;
-    background: #005a83;
-    border-radius: 5px;
     transition: 0.3s ease;
   }
 
@@ -220,13 +219,18 @@ nav {
 
 /* make logo fit nav bar */
 img {
-  height: 70px;
-  margin: 0;
+  width: 150px;
+  /* height: 70px; */
+  margin: 0; 
   vertical-align:top;
-  float: left;
+  padding: 20px;
 }
 
 #stories {
   white-space: pre-wrap;
 }
 
+.header-logo {
+  margin-right: auto;
+  padding-right: 20px;
+}
