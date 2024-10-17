@@ -1,4 +1,4 @@
-# mapping-our-stories
+# Mapping Our Stories: Community Health Impacts of Neighborhood Oil Drilling
 Showcasing community health narratives from South LA residents who live near neighborhood oil wells.
 
 ## Table of Contents
