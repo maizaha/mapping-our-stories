@@ -509,8 +509,9 @@ function createSummary(results, currZip){
     const itemspace = document.getElementById("summary");
     itemspace.appendChild(item);
     item.innerHTML += `<h3>Summary of data from ${currZip}</h3>`; 
-    item.innerHTML+=`<p>Insert data visualization here.</p>`;
+    item.innerHTML+=`<p>Insert relevant data visualizations here.</p>`;
 }
+
 //create separate layer groups for each well status
 var activeWellsLayer = L.layerGroup();
 var idleWellsLayer = L.layerGroup();
